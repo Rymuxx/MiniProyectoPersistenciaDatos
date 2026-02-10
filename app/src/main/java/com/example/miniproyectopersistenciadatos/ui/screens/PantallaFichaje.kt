@@ -10,12 +10,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.miniproyectopersistenciadatos.data.Fichaje
 import com.example.miniproyectopersistenciadatos.ui.MainViewModel
 import com.example.miniproyectopersistenciadatos.ui.theme.MiniProyectoPersistenciaDatosTheme
 
 @Composable
-fun PantallaFichaje(viewModel: MainViewModel) {
+fun PantallaFichaje(viewModel: MainViewModel = viewModel()) {
     val nombre by viewModel.nombreInput.collectAsState()
     val lista by viewModel.historialFichajes.collectAsState()
 
@@ -112,7 +113,7 @@ fun PantallaFichajeContent(
                         .fillMaxWidth()
                         .padding(vertical = 4.dp),
                     colors = CardDefaults.cardColors(
-                        containerColor = if (fichaje.tipo == "ENTRADA") 
+                        containerColor = if (fichaje.tipo == "ENTRADA")
                             Color(0xFFE8F5E9) else Color(0xFFFFEBEE)
                     )
                 ) {
@@ -129,7 +130,9 @@ fun PantallaFichajeContent(
                         }
                         Text(
                             text = fichaje.tipo,
-                            color = if (fichaje.tipo == "ENTRADA") Color(0xFF2E7D32) else Color(0xFFC62828),
+                            color = if (fichaje.tipo == "ENTRADA") Color(0xFF2E7D32) else Color(
+                                0xFFC62828
+                            ),
                             style = MaterialTheme.typography.labelLarge
                         )
                     }

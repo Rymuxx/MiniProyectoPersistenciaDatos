@@ -5,8 +5,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "fichajes")
 data class Fichaje(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
     val nombre: String,
     val hora: String,
-    val tipo: String // "ENTRADA" o "SALIDA"
+    val tipo: String
 )
